@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useState, useEffect } from 'react'
+import getGyms from './service/getGyms'
 
 function App() {
+
+  const [gyms, setGyms]  = useState([])
+  useEffect(() => getGyms(), [])
+
+  function getGyms(){
+    fetch("http://gym.api/gyms")
+           .then((res) => res.json())
+           .then((data) => setGyms(data))
+  }
+
+  const [search, setSearch] = useState(false)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!search &&<button onClick={() => setSearch(true)}>Suche</button>}
+      {search && gyms.map(({name, registrationFee, monthlyPrice}) =>(
+        <div>
+        <p>{name}</p>
+        <p>{registrationFee}</p>
+        <p>{monthlyPrice}</p>
+        </div>
+      ))}
     </div>
   );
 }

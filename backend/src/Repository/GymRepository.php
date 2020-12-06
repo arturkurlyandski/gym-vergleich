@@ -19,6 +19,13 @@ class GymRepository extends ServiceEntityRepository
         parent::__construct($registry, Gym::class);
     }
 
+    public function save(Gym $gym)
+    {
+        $this->_em->persist($gym);
+        $this->_em->flush();
+        return $gym;
+    }
+
     // /**
     //  * @return Gym[] Returns an array of Gym objects
     //  */
