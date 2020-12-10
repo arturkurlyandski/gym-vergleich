@@ -1,16 +1,14 @@
-
 import { useState, useEffect } from 'react'
 import getGyms from './service/getGyms'
 
 function App() {
 
   const [gyms, setGyms]  = useState([])
-  useEffect(() => getGyms(), [])
+  useEffect(() => insertGyms(), [])
 
-  function getGyms(){
-    fetch("http://gym.api/gyms")
-           .then((res) => res.json())
-           .then((data) => setGyms(data))
+  async function insertGyms(){
+    const gyms = await getGyms()
+    setGyms(gyms)
   }
 
   const [search, setSearch] = useState(false)
@@ -27,7 +25,7 @@ function App() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default App;

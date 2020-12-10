@@ -1,4 +1,5 @@
-// export default function getGyms() {
-//         fetch("http://gym.api/gyms")
-//           .then((res) => res.json())
-//       }
+export default function getGyms(){
+     return fetch("http://gym.api/gyms")
+           .then((res) => res.json())
+           .then((data) => {return data})
+  }
