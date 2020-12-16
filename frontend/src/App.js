@@ -1,29 +1,30 @@
-import { useState, useEffect } from 'react'
-import getGyms from './service/getGyms'
+import { Route, Switch } from "react-router-dom";
+import Home from "./Home"
+import Footer from "./Footer"
+import Header from "./Header"
+import GlobalStyle from "./GlobalStyle"
 
 function App() {
 
-  const [gyms, setGyms]  = useState([])
-  useEffect(() => insertGyms(), [])
-
-  async function insertGyms(){
-    const gyms = await getGyms()
-    setGyms(gyms)
-  }
-
-  const [search, setSearch] = useState(false)
-
-
   return (
-    <div className="App">
-      {!search &&<button onClick={() => setSearch(true)}>Suche</button>}
-      {search && gyms.map(({name, registrationFee, monthlyPrice}) =>(
-        <div>
-        <p>{name}</p>
-        <p>{registrationFee}</p>
-        <p>{monthlyPrice}</p>
-        </div>
-      ))}
+    <div>
+      <GlobalStyle />
+      <main>
+        <Header />
+        <hr />
+        <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route path="/profile">
+            <div>This is your Profile</div>
+          </Route>
+          <Route path="/bookmarks">
+            <div>Bookmarks are here</div>
+          </Route>
+        </Switch>
+        <Footer />
+      </main>
     </div>
   )
 }
