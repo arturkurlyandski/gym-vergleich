@@ -14,16 +14,19 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class GymRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(ManagerRegistry $registry) {
         parent::__construct($registry, Gym::class);
     }
 
-    public function save(Gym $gym)
-    {
+    public function save(Gym $gym): Gym {
         $this->_em->persist($gym);
         $this->_em->flush();
         return $gym;
+    }
+
+    public function delete(Gym $gym): void {
+        $this->_em->remove($gym);
+        $this->_em->flush();
     }
 
     // /**

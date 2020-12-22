@@ -45,4 +45,42 @@ class GymController extends AbstractController
             true
         );
     }
+
+    /**
+     * @Route("/gyms/{id}", methods={"DELETE"})
+     */
+    public function delete(int $id, GymRepository $repository): JsonResponse {
+        $gym = $repository->find($id);
+
+        if (is_null($gym)) {
+            return new JsonResponse(['success' => false], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        $repository->delete($gym);
+
+        return new JsonResponse(['success' => true]);
+        }
+
+    /**
+     * @Route("/gyms/edit/{id}", methods={"PUT"})
+     */
+    public function edit(int $id, GymRepository $repository, SerializerInterface $serializer, Request $request): JsonResponse {
+
+        $gym = $repository->find($id);
+
+        if (!$gym) {
+            return new JsonResponse(['success' => false], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        $gym = $serializer->deserialize($request->getContent(), Gym::class, 'json', ['object_to_populate' => $gym]);
+
+        $repository->save($gym);
+
+        return new JsonResponse(
+        $serializer->serialize($gym, 'json'),
+        JsonResponse::HTTP_OK,
+        [],
+        true
+    );
+        }
 }

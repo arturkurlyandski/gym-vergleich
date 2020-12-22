@@ -32,6 +32,26 @@ class Gym
      */
     private $monthly_price;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $parking;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $wellness;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $personal_training;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $child_care;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +89,54 @@ class Gym
     public function setMonthlyPrice(int $monthly_price): self
     {
         $this->monthly_price = $monthly_price;
+
+        return $this;
+    }
+
+    public function getParking(): ?bool
+    {
+        return $this->parking;
+    }
+
+    public function setParking(bool $parking): self
+    {
+        $this->parking = $parking;
+
+        return $this;
+    }
+
+    public function getWellness(): ?bool
+    {
+        return $this->wellness;
+    }
+
+    public function setWellness(bool $wellness): self
+    {
+        $this->wellness = $wellness;
+
+        return $this;
+    }
+
+    public function getPersonalTraining(): ?bool
+    {
+        return $this->personal_training;
+    }
+
+    public function setPersonalTraining(bool $personal_training): self
+    {
+        $this->personal_training = $personal_training;
+
+        return $this;
+    }
+
+    public function getChildCare(): ?bool
+    {
+        return $this->child_care;
+    }
+
+    public function setChildCare(bool $child_care): self
+    {
+        $this->child_care = $child_care;
 
         return $this;
     }
