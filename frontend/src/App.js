@@ -2,16 +2,15 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./Home"
 import Footer from "./Footer"
 import Header from "./Header"
-import GlobalStyle from "./GlobalStyle"
+import GlobalStyles from "./GlobalStyle";
 
 function App() {
 
   return (
     <div>
-      <GlobalStyle />
+      <GlobalStyles />
       <main>
         <Header />
-        <hr />
         <Switch>
           <Route exact path="/">
             <Home/>

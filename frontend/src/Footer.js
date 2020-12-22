@@ -17,17 +17,17 @@ export default function Header () {
         }
     `
     const NavBarStyled = styled.nav`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: white;
-    margin: 0px;
-    padding: 2px 0px;
-    border: solid 1px gray;
-    box-shadow: 0 0 30px 0px rgb(66, 75, 84, 0.2);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: white;
+        margin: 0px;
+        padding: 2px 0px;
+        border: solid 1px gray;
+        box-shadow: 0 0 30px 0px rgb(66, 75, 84, 0.2);
     `
 
     return (

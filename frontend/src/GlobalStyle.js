@@ -1,6 +1,9 @@
 import { createGlobalStyle } from "styled-components"
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
     * {
         box-sizing: border-box;
     }
@@ -13,4 +16,4 @@ const GlobalStyle = createGlobalStyle`
     }
 `
 
-export default GlobalStyle
+export default GlobalStyles

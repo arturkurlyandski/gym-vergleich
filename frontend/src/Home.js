@@ -43,6 +43,8 @@ export default function Home(){
         height: 40px;
         box-shadow: 0 0 30px 0px rgb(66, 75, 84, 0.2);
         border-radius: 10px;
+        border-style: none;
+        color: #E9E9E9;
         `
 
     const GymCard = styled.div`
@@ -61,7 +63,7 @@ export default function Home(){
         {!search &&<SearchWrapper>
         <ButtonStyled onClick={() => setSearch(true)}>Gyms vergleichen!</ButtonStyled>
         </SearchWrapper>}
-        {search && SortedGymsMonthlyPriceAsc.map(({name, registrationFee, monthlyPrice}) =>(
+        {search && gyms.map(({name, registrationFee, monthlyPrice}) =>(
             <GymCard>
             <p>{name}</p>
             <p>Anmeldegebühr: {registrationFee / Math.pow(10, 2)}</p>
