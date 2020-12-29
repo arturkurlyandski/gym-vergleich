@@ -15,7 +15,7 @@ export default function Header() {
 
     return (
     <div>
-        <Headline>Gym-Vergleich</Headline>
+        <Headline>Find-my-Gym</Headline>
     </div>
     )
 }

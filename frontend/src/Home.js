@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import getGyms from './service/getGyms'
 import styled from "styled-components"
 import DropDown from "./Dropdown"
+import GymCard from "./GymCard"
 
 export default function Home(){
     const [gyms, setGyms]  = useState([])
@@ -62,16 +63,6 @@ export default function Home(){
         margin-left: 85px;
         `
 
-    const GymCard = styled.div`
-
-        background-color: white;
-        margin: auto;
-        width: 90%;
-        box-shadow: 0 0 30px 0px rgb(66, 75, 84, 0.2);
-        border-radius: 10px;
-        font-family: "Roboto";
-        `
-
 
     return (
         <div className="App">
@@ -81,14 +72,7 @@ export default function Home(){
         </SearchWrapper>}
         {search && 
             <>
-            {gyms.map(({name, registrationFee, monthlyPrice}) =>(
-            <GymCard>
-            <p>{name}</p>
-            <p>Anmeldegebühr: {registrationFee / Math.pow(10, 2)}</p>
-            <p>Monatspreis: {monthlyPrice / Math.pow(10, 2)}</p>
-            <p>Zum Anbieter: Link</p>
-            </GymCard>
-            )) }
+            <GymCard gyms={gyms} />
             <ButtonStyledBack onClick={() => setSearch(false)}>Back</ButtonStyledBack>
             </> 
          }
