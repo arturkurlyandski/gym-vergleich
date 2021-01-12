@@ -13,16 +13,6 @@ export default function Home(){
         setGyms(gyms)
     }
 
-    let SortedGymsAlphabetAsc = gyms.sort((a,b) => (a.name > b.name) ? 1 : -1)
-    let SortedGymsAlphabetDesc = gyms.sort((a,b) => (a.name < b.name) ? 1 : -1)
-
-    let SortedGymsMonthlyPriceAsc = gyms.sort((a,b) => (a.monthlyPrice > b.monthlyPrice) ? 1 : -1)
-    let SortedGymsMonthlyPriceDesc = gyms.sort((a,b) => (a.monthlyPrice > b.monthlyPrice) ? 1 : -1)
-
-    let SaunaGyms = gyms.filter(gym => gym.sauna === true)
-
-
-
     const [search, setSearch] = useState(false)
 
     const SearchWrapper = styled.div`
